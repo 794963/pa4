@@ -10,61 +10,40 @@ void pageit(Pentry q[MAXPROCESSES])
             int predArr[15] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};//prediction array intitialization
             page = q[proc].pc/PAGESIZE;//get current proc page
             predArr[page] = 1;//set current proc page to 1 in prediction array
-            /*
-            switch(page){
-                case 2:
-                    predArr[0] = 1;
-                    predArr[3] = 1;
-                    predArr[4] = 1;
+            switch(page){//forgot to add break so was causing many issues
                 case 3:
                     predArr[0] = 1;
                     predArr[4] = 1;
                     predArr[10] = 1;
-                case 7:
-                    predArr[0] = 1;
-                    predArr[8] = 1;
-                    predArr[9] = 1;
-                case 8:
-                    predArr[0] = 1;
-                    predArr[9] = 1;
-                    predArr[10] = 1;
-                case 10:
-                    predArr[0] = 1;
-                    predArr[11] = 1;
-                    predArr[12] = 1;
+                    break;
                 case 11:
                     predArr[0] = 1;
                     predArr[1] = 1;
                     predArr[12] = 1;
+                    break;
                 case 12:
                     predArr[0] = 1;
                     predArr[9] = 1;
                     predArr[13] = 1;
+                    break;
                 case 13:
                     predArr[0] = 1;
                     predArr[14] = 1;
                     predArr[9] = 1;
                     predArr[10] = 1;
+                    break;
                 case 14:
                     predArr[0] = 1;
                     predArr[2] = 1;
+                    break;
                 default:
                 //default is first page then next two as the predictor (testing with this and edge case first)
                     predArr[0] = 1;
                     predArr[page + 1] = 1;
                     predArr[page + 2] = 1;
                     
-        }*/
-            if (page == 2){predArr[4] = 1;predArr[3] = 1;predArr[0] = 1;}
-            else if (page == 3){predArr[0]  = 1;predArr[4]  = 1;predArr[10] = 1;}
-            else if (page == 7){predArr[0] = 1;predArr[8] = 1;predArr[9] = 1;}
-            else if (page == 8){predArr[0]  = 1;predArr[9]  = 1;predArr[10] = 1;}
-            else if (page == 10){predArr[0]  = 1;predArr[11] = 1;predArr[12] = 1;}
-            else if (page == 11){predArr[0]  = 1;predArr[1]  = 1;predArr[12] = 1;}
-            else if (page == 12){predArr[0]  = 1;predArr[9]  = 1;predArr[13] = 1;}
-            else if (page == 13){predArr[0]  = 1;predArr[9]  = 1;predArr[10] = 1;predArr[14] = 1;}
-            else if (page == 14){predArr[0] = 1;predArr[2] = 1;}
-            else{predArr[0] = 1;predArr[page + 1] = 1;predArr[page + 2] = 1;} 
+        }
+            
             for(int i = 0; i < 15; i++){//iterate through predArr and pageout and pagein based on bit(1/0) of page
                 if (predArr[i] == 0){
                     pageout(proc,i);//evict
