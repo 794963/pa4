@@ -11,23 +11,39 @@ void pageit(Pentry q[MAXPROCESSES])
             page = q[proc].pc/PAGESIZE;//get current proc page
             predArr[page] = 1;//set current proc page to 1 in prediction array
             switch(page){
+                case 2:
+                    predArr[0] = 1;
+                    predArr[3] = 1;
+                    predArr[4] = 1;
                 case 3:
                     predArr[0] = 1;
                     predArr[4] = 1;
                     predArr[10] = 1;
+                case 7:
+                    predArr[0] = 1;
+                    predArr[8] = 1;
+                    predArr[9] = 1;
+                case 8:
+                    predArr[0] = 1;
+                    predArr[9] = 1;
+                    predArr[10] = 1;
+                case 10:
+                    predArr[0] = 1;
+                    predArr[11] = 1;
+                    predArr[12] = 1;
                 case 11:
                     predArr[0] = 1;
-                    predArr[12] = 1;
                     predArr[1] = 1;
+                    predArr[12] = 1;
                 case 12:
                     predArr[0] = 1;
                     predArr[9] = 1;
                     predArr[13] = 1;
                 case 13:
                     predArr[0] = 1;
+                    predArr[14] = 1;
                     predArr[9] = 1;
                     predArr[10] = 1;
-                    predArr[14] = 1;
                 case 14:
                     predArr[0] = 1;
                     predArr[2] = 1;
