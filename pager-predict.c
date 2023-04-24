@@ -11,26 +11,18 @@ void pageit(Pentry q[MAXPROCESSES])
             page = q[proc].pc/PAGESIZE;//get current proc page
             predArr[page] = 1;//set current proc page to 1 in prediction array
             switch(page){//forgot to add break so was causing many issues
-                case 3:
-                    predArr[0] = 1;
-                    predArr[4] = 1;
-                    predArr[10] = 1;
-                    break;
                 case 11:
                     predArr[0] = 1;
-                    predArr[1] = 1;
                     predArr[12] = 1;
                     break;
                 case 12:
                     predArr[0] = 1;
-                    predArr[9] = 1;
                     predArr[13] = 1;
                     break;
                 case 13:
                     predArr[0] = 1;
                     predArr[14] = 1;
                     predArr[9] = 1;
-                    predArr[10] = 1;
                     break;
                 case 14:
                     predArr[0] = 1;
